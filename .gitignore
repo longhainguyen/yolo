@@ -1,0 +1,5 @@
+# Bỏ qua thư mục .venv
+.venv/
+
+# Bỏ qua thư mục data
+data/
