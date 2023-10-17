@@ -6,7 +6,7 @@ from loss import yolo_loss
 import torch.optim as optim
 from model import Yolov1
 import config
-import dataset
+from dataset import load_data_to_train
 
 DEVICE = "cuda" if torch.cuda.is_available else "cpu"
 
@@ -37,7 +37,7 @@ def main():
     )
     
 
-    x_train, y_train = dataset.load_data_to_train()
+    x_train, y_train = load_data_to_train()
 
     x_train = torch.Tensor(x_train)
     y_train = torch.Tensor(y_train)
