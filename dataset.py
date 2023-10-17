@@ -84,13 +84,13 @@ def load_data_to_train():
     file_list = os.listdir(config.DATA_IMG_DIR)
     x_train = torch.zeros((len(file_list), config.img_size_H, config.img_size_W, 3))
     for idx ,file_name in enumerate(file_list):
-        x_train[idx] = torch.from_numpy(cv2.imread("./data/images/train/{}".format(file_name)))
+        x_train[idx] = torch.from_numpy(cv2.imread(f"{config.DATA_IMG_DIR}{file_name}"))
     x_train = x_train.permute(0, 3, 1, 2)/255
 
     file_list_label = os.listdir(config.DATA_LABLE_DIR)
     y_train = torch.zeros((len(file_list), config.out_W, config.out_H, config.nclass + 5))
     for idx ,file_name in enumerate(file_list_label):
-        with open("./data/labels/train/{}".format(file_name), 'r') as file:
+        with open(f"{config.DATA_LABLE_DIR}{file_name}", 'r') as file:
         # Đọc nội dung của tệp và gán nó cho một biến
             file_content = file.read()
             lines = file_content.splitlines()
